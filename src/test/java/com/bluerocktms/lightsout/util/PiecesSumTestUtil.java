@@ -4,10 +4,10 @@ import com.bluerocktms.lightsout.model.Coordinate;
 
 import java.util.*;
 
-public class PiecesSumUtil {
+public class PiecesSumTestUtil {
 
 
-    private PiecesSumUtil(){
+    private PiecesSumTestUtil(){
     }
 
     public static int[][] sum(Integer depth,

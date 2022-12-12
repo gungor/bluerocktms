@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public class PiecesSumUtilTest {
+public class PiecesSumTestUtilTest {
 
     @Test
     public void shouldSumPieces_WhenDepthTwo(){
@@ -21,7 +21,7 @@ public class PiecesSumUtilTest {
                 new Coordinate(0,2), new Coordinate(1,0));
 
         assertArrayEquals(new Integer[][]{{0,0,0},{0,0,0},{0,0,0}},
-                PiecesSumUtil.sum(depth,boardState,pieceList,coordinateList));
+                PiecesSumTestUtil.sum(depth,boardState,pieceList,coordinateList));
 
     }
 
@@ -35,7 +35,7 @@ public class PiecesSumUtilTest {
                 new Coordinate(0,2), new Coordinate(1,0));
 
         assertArrayEquals(new Integer[][]{{0,0,2},{0,2,2},{2,1,2}},
-                PiecesSumUtil.sum(depth,boardState,pieceList,coordinateList));
+                PiecesSumTestUtil.sum(depth,boardState,pieceList,coordinateList));
 
     }
 
@@ -49,7 +49,7 @@ public class PiecesSumUtilTest {
                 new Coordinate(0,2), new Coordinate(1,0));
 
         assertArrayEquals(new Integer[][]{{0,0,2},{0,2,2},{2,0,2}},
-                PiecesSumUtil.sum(depth,boardState,pieceList,coordinateList));
+                PiecesSumTestUtil.sum(depth,boardState,pieceList,coordinateList));
 
     }
 

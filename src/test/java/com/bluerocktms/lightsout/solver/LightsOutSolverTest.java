@@ -1,9 +1,10 @@
-package com.bluerocktms.lightsout;
+package com.bluerocktms.lightsout.solver;
 
 import com.bluerocktms.lightsout.exception.SolutionNotFoundException;
 import com.bluerocktms.lightsout.model.Coordinate;
+import com.bluerocktms.lightsout.solver.LightsOutSolver;
 import com.bluerocktms.lightsout.util.ConverterUtil;
-import com.bluerocktms.lightsout.util.PiecesSumUtil;
+import com.bluerocktms.lightsout.util.PiecesSumTestUtil;
 import org.junit.Test;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class LightsOutSolverTest {
         List<Coordinate> solutionCoordinates = lightsOutSolver.solve(depth, boardState, pieceList);
 
         assertArrayEquals(new Integer[][]{{0,0,0},{0,0,0},{0,0,0}},
-                PiecesSumUtil.sum(depth,boardState,pieceList,solutionCoordinates));
+                PiecesSumTestUtil.sum(depth,boardState,pieceList,solutionCoordinates));
 
     }
 
@@ -39,22 +40,7 @@ public class LightsOutSolverTest {
         List<Coordinate> solutionCoordinates = lightsOutSolver.solve(depth, boardState, pieceList);
 
         assertArrayEquals(new Integer[][]{{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}},
-                PiecesSumUtil.sum(depth,boardState,pieceList,solutionCoordinates));
-
-    }
-
-    @Test
-    public void solveCase3() throws SolutionNotFoundException {
-        Integer depth = 3;
-
-        int[][] boardState = ConverterUtil.convertStringToBoard("2121,2212,1001,2011,1211,2111");
-        List<int[][]> pieceList = ConverterUtil.convertStringToPiecesList("X...,X.X.,XXXX,XX.. XXX,X.X XX,X. XX,.X,.X XX.,.XX,.X.,.X. XX..,.XXX .X.,.X.,XX.,XXX ..XX,..XX,XXX. .X..,.XX.,X.X.,XXXX X,X,X,X .X.,.XX,.X.,.X.,XXX");
-
-        LightsOutSolver lightsOutSolver = new LightsOutSolver();
-        List<Coordinate> solutionCoordinates = lightsOutSolver.solve(depth, boardState, pieceList);
-
-        assertArrayEquals(new Integer[][]{{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}},
-                PiecesSumUtil.sum(depth,boardState,pieceList,solutionCoordinates));
+                PiecesSumTestUtil.sum(depth,boardState,pieceList,solutionCoordinates));
 
     }
 

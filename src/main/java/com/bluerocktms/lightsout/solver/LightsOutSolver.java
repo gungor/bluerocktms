@@ -1,15 +1,12 @@
-package com.bluerocktms.lightsout;
+package com.bluerocktms.lightsout.solver;
 
 
 import com.bluerocktms.lightsout.exception.SolutionNotFoundException;
 import com.bluerocktms.lightsout.model.Coordinate;
-import com.bluerocktms.lightsout.model.State;
 
 import java.util.*;
 
 public class LightsOutSolver {
-
-    private Set<State> unsolvableStateSet = new HashSet<>();
     public List<Coordinate> solve(Integer depth, int[][] boardState, List<int[][]> pieces) throws SolutionNotFoundException {
         int[][] solvedBoard = new int[boardState.length][boardState[0].length];
         List<Coordinate> coordinates = possibleBackwardSolution(depth, pieces, solvedBoard, boardState);
@@ -22,15 +19,9 @@ public class LightsOutSolver {
                                                       int[][] currentState,
                                                       int[][] targetState) throws SolutionNotFoundException {
 
-        if( unsolvableStateSet.contains( State.of(pieces,currentState) ) ){
-            System.out.println("unsolvable");
-            throw new SolutionNotFoundException();
-        }
-
         List<int[][]> previousPieces = null;
         if(pieces == null){
             if( Objects.deepEquals(currentState,targetState) ){
-                System.out.println("found solution");
                 return Collections.emptyList();
             }else {
                 throw new SolutionNotFoundException();
@@ -52,7 +43,6 @@ public class LightsOutSolver {
                         previousPieces ,boardStateBeforePiece , targetState ) );
                 solutionCoordinates.add(coordinateList);
             } catch (SolutionNotFoundException e) {
-                unsolvableStateSet.add( State.of(previousPieces, boardStateBeforePiece) );
             }
         }
         return solutionCoordinates.stream().findAny().orElseThrow(SolutionNotFoundException::new);
